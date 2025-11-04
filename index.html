@@ -5,50 +5,51 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bishop's Storehouse Checklist</title>
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    max-width: 1000px;
-    background-color: #f8f9fa;
-  }
-  h1 {
-    text-align: center;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
-  th, td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-  }
-  th {
-    background-color: #e9ecef;
-  }
-  input[type="number"] {
-    width: 70px;
-    text-align: center;
-  }
-  input[type="text"] {
-    width: 300px;
-    padding: 6px;
-  }
-  .btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 6px;
-  }
-  .btn:hover {
-    background-color: #0056b3;
-  }
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  max-width: 1000px;
+  background-color: #f8f9fa;
+}
+h1 {
+  text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: left;
+}
+th {
+  background-color: #e9ecef;
+}
+input[type="number"] {
+  width: 60px;
+  text-align: center;
+}
+input[type="text"] {
+  width: 300px;
+  padding: 5px;
+}
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  margin-right: 10px;
+  padding: 10px 20px;
+  font-size: 15px;
+  cursor: pointer;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
 </style>
 </head>
 <body>
@@ -57,6 +58,11 @@
 
 <label for="nameInput"><strong>Your Name:</strong></label>
 <input type="text" id="nameInput" placeholder="Enter your name here">
+
+<div style="margin-top:15px;">
+  <button class="btn" onclick="clearAll()">Clear All</button>
+  <button class="btn" onclick="copyAndSMS()">Copy & Open SMS</button>
+</div>
 
 <table id="itemTable">
   <thead>
@@ -104,61 +110,6 @@
     <tr><td>Chocolate cake mix</td><td>18.2 oz</td><td><input type="number" min="0" value="0"></td></tr>
     <tr><td>Yellow cake mix</td><td>18.2 oz</td><td><input type="number" min="0" value="0"></td></tr>
 
-    <!-- (Additional categories like seasonings, beans, rice, potatoes, dairy, meats, breads, fresh produce, etc.) -->
-    <!-- Add them here following the same structure -->
-
-  </tbody>
-</table>
-
-<button class="btn" onclick="copyAndSMS()">Copy & Open SMS</button>
-
-<script>
-  // Auto-clear 0 in number boxes
-  document.querySelectorAll('input[type="number"]').forEach(input => {
-    input.addEventListener('focus', () => {
-      if (input.value === '0') input.value = '';
-    });
-    input.addEventListener('blur', () => {
-      if (input.value === '') input.value = '0';
-    });
-  });
-
-  // Copy plain text and open SMS
-  function copyAndSMS() {
-    const name = document.getElementById('nameInput').value.trim() || '(no name entered)';
-    const rows = document.querySelectorAll('#itemTable tbody tr');
-    let list = `${name}\n\nSelected Items:\n`;
-
-    rows.forEach(row => {
-      const item = row.cells[0].textContent.trim();
-      const size = row.cells[1].textContent.trim();
-      const qty = row.cells[2].querySelector('input').value;
-      if (qty && qty !== '0') {
-        list += `• ${item} ${size} – ${qty}\n`;
-      }
-    });
-
-    if (!list.includes('•')) {
-      alert('No items selected.');
-      return;
-    }
-
-    // Copy plain text
-    const textarea = document.createElement('textarea');
-    textarea.value = list;
-    document.body.appendChild(textarea);
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // for iOS
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    // Open SMS app with pre-filled body
-    const body = encodeURIComponent(list);
-    window.location.href = `sms:?body=${body}`;
-
-    alert('✅ List copied and SMS app opened. Choose a recipient to send.');
-  }
-</script>
-
-</body>
-</html>
+    <!-- SEASONINGS -->
+    <tr><td>Cinnamon</td><td>2.37 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Black pepper</td><td>2.2 oz</td><td><input type="number" min="0" value="0"
