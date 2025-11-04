@@ -9,25 +9,28 @@
   h1 { text-align: center; }
   details { background: #fff; border-radius: 10px; margin-bottom: 8px; padding: 8px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
   summary { font-weight: bold; cursor: pointer; font-size: 1.1em; }
-  label { display: block; padding: 4px 0; }
+  label { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
+  input[type="number"] { width: 55px; padding: 4px; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; text-align: center; }
   button { 
     display: block; width: 100%; margin-top: 1em; padding: 12px; 
     background: #007bff; color: white; font-size: 1.1em; border: none; border-radius: 8px; cursor: pointer; 
   }
   button:hover { background: #0056b3; }
   textarea { width: 100%; height: 160px; margin-top: 10px; font-size: 1em; }
+  .small-note { text-align: center; font-size: 0.9em; color: #666; }
 </style>
 </head>
 <body>
 
 <h1>🛒 Bishop’s Storehouse Checklist</h1>
-
-<p>Select the items you need, then tap <strong>Copy Selected Items</strong> to copy and send them back.</p>
+<p>Select quantities (0–9) for the items you need, then tap <strong>Copy Selected Items</strong> to send them back.</p>
 
 <div id="checklist"></div>
 
 <button onclick="copyList()">📋 Copy Selected Items</button>
 <textarea id="outputBox" readonly placeholder="Your selected items will appear here..."></textarea>
+
+<p class="small-note">Values are saved automatically so you won’t lose progress if you refresh.</p>
 
 <script>
 // --- Category + Items ---
@@ -108,13 +111,16 @@ for (const [cat, items] of Object.entries(categories)) {
 
   items.forEach(item => {
     const label = document.createElement('label');
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.value = item;
-    checkbox.checked = localStorage.getItem(item) === 'true';
-    checkbox.onchange = () => localStorage.setItem(item, checkbox.checked);
-    label.appendChild(checkbox);
-    label.append(" " + item);
+    label.textContent = item;
+
+    const numberInput = document.createElement('input');
+    numberInput.type = 'number';
+    numberInput.min = 0;
+    numberInput.max = 9;
+    numberInput.value = localStorage.getItem(item) || 0;
+    numberInput.onchange = () => localStorage.setItem(item, numberInput.value);
+
+    label.appendChild(numberInput);
     details.appendChild(label);
   });
   checklistDiv.appendChild(details);
@@ -122,13 +128,20 @@ for (const [cat, items] of Object.entries(categories)) {
 
 // --- Copy button ---
 function copyList() {
-  const checked = [...document.querySelectorAll('input[type=checkbox]:checked')]
-    .map(cb => cb.value);
-  if (checked.length === 0) {
+  const inputs = document.querySelectorAll('input[type=number]');
+  const selected = [];
+  inputs.forEach(input => {
+    const qty = parseInt(input.value);
+    if (qty > 0) {
+      const itemName = input.parentElement.firstChild.textContent.trim();
+      selected.push(`• ${itemName} – ${qty}`);
+    }
+  });
+  if (selected.length === 0) {
     alert("No items selected.");
     return;
   }
-  const text = "Selected Items:\n" + checked.map(item => "• " + item).join("\n");
+  const text = "Selected Items:\n" + selected.join("\n");
   const outputBox = document.getElementById('outputBox');
   outputBox.value = text;
   outputBox.select();
