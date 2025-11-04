@@ -1,216 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bishop's Storehouse Checklist</title>
-<style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9; }
-  header { position: sticky; top: 0; background-color: #007acc; color: white; padding: 15px; text-align: center; font-size: 20px; z-index: 100; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
-  form { padding: 15px; max-width: 600px; margin: auto; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-  h3 { margin-top: 25px; background-color: #e0e0e0; padding: 5px 10px; border-radius: 5px; position: sticky; top: 50px; z-index: 50; }
-  label { display: block; margin: 5px 0; }
-  button { width: 100%; padding: 12px; font-size: 16px; margin-top: 20px; background-color: #007acc; color: white; border: none; border-radius: 5px; }
-  button:active { background-color: #005f99; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bishop’s Storehouse Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #2a4d69;
+    }
+    form {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      padding: 4px 0;
+    }
+    input[type="checkbox"] {
+      margin-right: 8px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #2a4d69;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    button:hover {
+      background-color: #1d3557;
+    }
+    textarea {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 1em;
+      resize: vertical;
+    }
+    #results {
+      background-color: #f1f1f1;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
+  <h1>Bishop’s Storehouse Checklist</h1>
+  <p>Select the items you need, then tap <b>“Save & Send Back”</b> below.</p>
 
-<header>Bishop's Storehouse Checklist</header>
+  <form id="checklistForm">
 
-<form id="checklistForm">
+    <h3>Canned Meats</h3>
+    <label><input type="checkbox"> Fully cooked beef (canned) 14.4 oz</label>
+    <label><input type="checkbox"> Beef stew 14.4 oz</label>
+    <label><input type="checkbox"> Chili 14.4 oz</label>
+    <label><input type="checkbox"> Pork and beans 14.8 oz</label>
+    <label><input type="checkbox"> Tuna 5 oz</label>
+    <label><input type="checkbox"> Chicken breast pieces 12.5 oz</label>
 
-<h3>Canned Meats</h3>
-<label><input type="checkbox"> Fully cooked beef (canned) 14.4 oz</label>
-<label><input type="checkbox"> Beef stew 14.4 oz</label>
-<label><input type="checkbox"> Chili 14.4 oz</label>
-<label><input type="checkbox"> Pork and beans 14.8 oz</label>
-<label><input type="checkbox"> Tuna 5 oz</label>
-<label><input type="checkbox"> Chicken breast pieces 12.5 oz</label>
+    <h3>Canned Soups</h3>
+    <label><input type="checkbox"> Chicken flavored rotini soup 14.4 oz</label>
+    <label><input type="checkbox"> Cream of chicken soup 14.5 oz</label>
+    <label><input type="checkbox"> Cream of mushroom soup 14.5 oz</label>
+    <label><input type="checkbox"> Tomato soup 14.4 oz</label>
 
-<h3>Canned Soups</h3>
-<label><input type="checkbox"> Chicken flavored rotini soup 14.4 oz</label>
-<label><input type="checkbox"> Cream of chicken soup 14.5 oz</label>
-<label><input type="checkbox"> Cream of mushroom soup 14.5 oz</label>
-<label><input type="checkbox"> Tomato soup 14.4 oz</label>
+    <h3>Canned Fruits</h3>
+    <label><input type="checkbox"> Applesauce 26.5 oz</label>
+    <label><input type="checkbox"> Peaches 29 oz</label>
+    <label><input type="checkbox"> Pears 29 oz</label>
 
-<h3>Canned Fruits</h3>
-<label><input type="checkbox"> Applesauce 26.5 oz</label>
-<label><input type="checkbox"> Peaches 29 oz</label>
-<label><input type="checkbox"> Pears 29 oz</label>
+    <h3>Canned Vegetables</h3>
+    <label><input type="checkbox"> Corn 14.4 oz</label>
+    <label><input type="checkbox"> Green beans 14.4 oz</label>
+    <label><input type="checkbox"> Spaghetti sauce 27.7 oz</label>
+    <label><input type="checkbox"> Tomato sauce 14.4 oz</label>
+    <label><input type="checkbox"> Diced tomatoes 28 oz</label>
 
-<h3>Canned Vegetables</h3>
-<label><input type="checkbox"> Corn 14.4 oz</label>
-<label><input type="checkbox"> Green beans 14.4 oz</label>
-<label><input type="checkbox"> Spaghetti sauce 27.7 oz</label>
-<label><input type="checkbox"> Tomato sauce 14.4 oz</label>
-<label><input type="checkbox"> Diced tomatoes 28 oz</label>
+    <h3>Drinks</h3>
+    <label><input type="checkbox"> Hot cocoa 26 servings</label>
+    <label><input type="checkbox"> Non-fat dry milk 27 servings</label>
 
-<h3>Drinks</h3>
-<label><input type="checkbox"> Hot cocoa 26 servings</label>
-<label><input type="checkbox"> Non-fat dry milk 27 servings</label>
+    <h3>Desserts</h3>
+    <label><input type="checkbox"> Strawberry gelatin 8 servings</label>
+    <label><input type="checkbox"> Chocolate pudding 6 servings</label>
+    <label><input type="checkbox"> Vanilla pudding 6 servings</label>
+    <label><input type="checkbox"> Chocolate cake mix 18.2 oz</label>
+    <label><input type="checkbox"> Yellow cake mix 18.2 oz</label>
 
-<h3>Desserts</h3>
-<label><input type="checkbox"> Strawberry gelatin 8 servings</label>
-<label><input type="checkbox"> Chocolate pudding 6 servings</label>
-<label><input type="checkbox"> Vanilla pudding 6 servings</label>
-<label><input type="checkbox"> Chocolate cake mix 18.2 oz</label>
-<label><input type="checkbox"> Yellow cake mix 18.2 oz</label>
+    <h3>Seasonings</h3>
+    <label><input type="checkbox"> Cinnamon 2.37 oz</label>
+    <label><input type="checkbox"> Black pepper 2.2 oz</label>
+    <label><input type="checkbox"> Salt (iodized) 26 oz</label>
+    <label><input type="checkbox"> Vanilla flavor 4 fl oz</label>
 
-<h3>Seasonings</h3>
-<label><input type="checkbox"> Cinnamon 2.37 oz</label>
-<label><input type="checkbox"> Black pepper 2.2 oz</label>
-<label><input type="checkbox"> Salt (iodized) 26 oz</label>
-<label><input type="checkbox"> Vanilla flavor 4 fl oz</label>
+    <h3>Beans, Rice, and Potatoes</h3>
+    <label><input type="checkbox"> Black beans (canned) 14.8 oz</label>
+    <label><input type="checkbox"> Pinto Beans (canned) 14.8 oz</label>
+    <label><input type="checkbox"> Great northern beans (canned) 14.8 oz</label>
+    <label><input type="checkbox"> Pinto beans (dry) 16 oz</label>
+    <label><input type="checkbox"> Refried beans (dehydrated) 2 lb</label>
+    <label><input type="checkbox"> Instant potatoes 28 oz</label>
+    <label><input type="checkbox"> Rice 32 oz</label>
 
-<h3>Beans, Rice, & Potatoes</h3>
-<label><input type="checkbox"> Black beans (canned) 14.8 oz</label>
-<label><input type="checkbox"> Pinto Beans (canned) 14.8 oz</label>
-<label><input type="checkbox"> Great northern beans (canned) 14.8 oz</label>
-<label><input type="checkbox"> Pinto beans (dry) 16 oz</label>
-<label><input type="checkbox"> Refried beans (dehydrated) 2 lb</label>
-<label><input type="checkbox"> Instant potatoes 28 oz</label>
-<label><input type="checkbox"> Rice 32 oz</label>
+    <h3>Cooking Products</h3>
+    <label><input type="checkbox"> Baking powder 8.1 oz</label>
+    <label><input type="checkbox"> Baking soda 12 oz</label>
+    <label><input type="checkbox"> Evaporated milk 12 fl oz</label>
+    <label><input type="checkbox"> Raisins 16 oz</label>
+    <label><input type="checkbox"> Vegetable oil 24 fl oz</label>
+    <label><input type="checkbox"> Yeast 3 packs</label>
 
-<h3>Cooking Products</h3>
-<label><input type="checkbox"> Baking powder 8.1 oz</label>
-<label><input type="checkbox"> Baking soda 12 oz</label>
-<label><input type="checkbox"> Evaporated milk 12 fl oz</label>
-<label><input type="checkbox"> Raisins 16 oz</label>
-<label><input type="checkbox"> Vegetable oil 24 fl oz</label>
-<label><input type="checkbox"> Yeast 3 packs</label>
+    <h3>Jams and Condiments</h3>
+    <label><input type="checkbox"> Olives (black) 6 oz</label>
+    <label><input type="checkbox"> Ketchup 24 oz</label>
+    <label><input type="checkbox"> Honey 12 oz</label>
+    <label><input type="checkbox"> Raspberry jam 20.5 oz</label>
+    <label><input type="checkbox"> Strawberry jam 20.5 oz</label>
+    <label><input type="checkbox"> Mustard 10.5 oz</label>
+    <label><input type="checkbox"> Pancake syrup 20.4 fl oz</label>
+    <label><input type="checkbox"> Peanut butter 16 oz</label>
+    <label><input type="checkbox"> Mayo 15 oz</label>
+    <label><input type="checkbox"> Ranch dressing 16 oz</label>
+    <label><input type="checkbox"> Salsa 26.5 oz</label>
 
-<h3>Jams & Condiments</h3>
-<label><input type="checkbox"> Olives (black) 6 oz</label>
-<label><input type="checkbox"> Ketchup 24 oz</label>
-<label><input type="checkbox"> Honey 12 oz</label>
-<label><input type="checkbox"> Raspberry jam 20.5 oz</label>
-<label><input type="checkbox"> Strawberry jam 20.5 oz</label>
-<label><input type="checkbox"> Mustard 10.5 oz</label>
-<label><input type="checkbox"> Pancake syrup 20.4 fl oz</label>
-<label><input type="checkbox"> Peanut butter 16 oz</label>
-<label><input type="checkbox"> Mayo 15 oz</label>
-<label><input type="checkbox"> Ranch dressing 16 oz</label>
-<label><input type="checkbox"> Salsa 26.5 oz</label>
+    <h3>Sugars</h3>
+    <label><input type="checkbox"> Brown sugar 2 lb</label>
+    <label><input type="checkbox"> Granulated sugar 4 lb</label>
+    <label><input type="checkbox"> Powdered sugar 2 lb</label>
 
-<h3>Sugars</h3>
-<label><input type="checkbox"> Brown sugar 2 lb</label>
-<label><input type="checkbox"> Granulated sugar 4 lb</label>
-<label><input type="checkbox"> Powdered sugar 2 lb</label>
+    <h3>Flours</h3>
+    <label><input type="checkbox"> Pancake and waffle mix 4 lb</label>
+    <label><input type="checkbox"> White flour 10 lb</label>
 
-<h3>Flours</h3>
-<label><input type="checkbox"> Pancake and waffle mix 4 lb</label>
-<label><input type="checkbox"> White flour 10 lb</label>
+    <h3>Pastas</h3>
+    <label><input type="checkbox"> Macaroni 16 oz</label>
+    <label><input type="checkbox"> Macaroni and cheese 7 oz</label>
+    <label><input type="checkbox"> Ribbon pasta 16 oz</label>
+    <label><input type="checkbox"> Spaghetti 16 oz</label>
 
-<h3>Pastas</h3>
-<label><input type="checkbox"> Macaroni 16 oz</label>
-<label><input type="checkbox"> Macaroni and cheese 7 oz</label>
-<label><input type="checkbox"> Ribbon pasta 16 oz</label>
-<label><input type="checkbox"> Spaghetti 16 oz</label>
+    <h3>Cereals</h3>
+    <label><input type="checkbox"> Rolled oats 32 oz</label>
+    <label><input type="checkbox"> Honey nut o's 24.5 oz</label>
+    <label><input type="checkbox"> Raisin bran 22 oz</label>
 
-<h3>Cereals</h3>
-<label><input type="checkbox"> Rolled oats 32 oz</label>
-<label><input type="checkbox"> Honey nut o's 24.5 oz</label>
-<label><input type="checkbox"> Raisin bran 22 oz</label>
+    <h3>Baby Products</h3>
+    <label><input type="checkbox"> Baby cereal 8 oz</label>
+    <label><input type="checkbox"> Baby formula 12.4 oz</label>
+    <label><input type="checkbox"> Diapers, size 1 (8–14 lb) pkg of 50</label>
+    <label><input type="checkbox"> Diapers, size 3 (16–28 lb) pkg of 36</label>
+    <label><input type="checkbox"> Diapers, size 4 (22–37 lb) pkg of 31</label>
+    <label><input type="checkbox"> Baby wipes pkg</label>
 
-<h3>Baby Products</h3>
-<label><input type="checkbox"> Baby Cereal 8 oz</label>
-<label><input type="checkbox"> Baby formula 12.4 oz</label>
-<label><input type="checkbox"> Diapers, size 1 (8-14 lb) pkg of 50</label>
-<label><input type="checkbox"> Diapers, size 3 (16-28 lb) pkg of 36</label>
-<label><input type="checkbox"> Diapers, size 4 (22-37 lb) pkg of 31</label>
-<label><input type="checkbox"> Baby wipes pkg</label>
+    <h3>Household Products</h3>
+    <label><input type="checkbox"> Aluminum foil roll</label>
+    <label><input type="checkbox"> Liquid bleach 43 fl oz</label>
+    <label><input type="checkbox"> Cleanser 21 oz</label>
+    <label><input type="checkbox"> Liquid dish soap 22 fl oz</label>
+    <label><input type="checkbox"> Automatic dishwasher liquid 42 fl oz</label>
+    <label><input type="checkbox"> Laundry detergent 50 fl oz</label>
+    <label><input type="checkbox"> Plastic wrap roll</label>
+    <label><input type="checkbox"> Lysol spray cleaner 32 oz</label>
 
-<h3>Household Products</h3>
-<label><input type="checkbox"> Aluminum foil roll</label>
-<label><input type="checkbox"> Liquid bleach 43 fl oz</label>
-<label><input type="checkbox"> Cleanser 21 oz</label>
-<label><input type="checkbox"> Liquid dish soap 22 fl oz</label>
-<label><input type="checkbox"> Automatic dishwasher liquid 42 fl oz</label>
-<label><input type="checkbox"> Laundry detergent 50 fl oz</label>
-<label><input type="checkbox"> Plastic wrap roll</label>
-<label><input type="checkbox"> Lysol spray cleaner 32 oz</label>
+    <h3>Personal Products</h3>
+    <label><input type="checkbox"> Deodorant (men)</label>
+    <label><input type="checkbox"> Deodorant (women)</label>
+    <label><input type="checkbox"> Bar soap pkg of 3</label>
+    <label><input type="checkbox"> Razor (disposable)</label>
+    <label><input type="checkbox"> Sanitary pads pkg of 24</label>
+    <label><input type="checkbox"> Shampoo (with conditioner) 12 fl oz</label>
+    <label><input type="checkbox"> Shaving cream 10 oz</label>
+    <label><input type="checkbox"> Tampons (regular) pkg of 32</label>
+    <label><input type="checkbox"> Tampons (super) pkg of 32</label>
+    <label><input type="checkbox"> Toilet paper pkg of 4</label>
+    <label><input type="checkbox"> Toothbrush (adult)</label>
+    <label><input type="checkbox"> Toothbrush (child)</label>
+    <label><input type="checkbox"> Toothpaste 4 oz</label>
 
-<h3>Personal Products</h3>
-<label><input type="checkbox"> Deodorant (men) ea</label>
-<label><input type="checkbox"> Deodorant (women) ea</label>
-<label><input type="checkbox"> Bar soap pkg of 3</label>
-<label><input type="checkbox"> Razor (disposable) ea</label>
-<label><input type="checkbox"> Sanitary pads pkg of 24</label>
-<label><input type="checkbox"> Shampoo (with conditioner) 12 fl oz</label>
-<label><input type="checkbox"> Shaving cream 10 oz</label>
-<label><input type="checkbox"> Tampons (regular) pkg of 32</label>
-<label><input type="checkbox"> Tampons (super) pkg of 32</label>
-<label><input type="checkbox"> Toilet paper pkg of 4</label>
-<label><input type="checkbox"> Toothbrush (adult) ea</label>
-<label><input type="checkbox"> Toothbrush (child) ea</label>
-<label><input type="checkbox"> Toothpaste 4 oz</label>
+    <h3>Fresh Fruits</h3>
+    <label><input type="checkbox"> Apples bag, abt 4 lb</label>
+    <label><input type="checkbox"> Bananas bag, abt 3 lb</label>
+    <label><input type="checkbox"> Grapes bag, abt 2 lb</label>
+    <label><input type="checkbox"> Oranges bag, abt 4 lb</label>
 
-<h3>Fresh Fruits</h3>
-<label><input type="checkbox"> Apples bag, abt 4 lb</label>
-<label><input type="checkbox"> Bananas bag, abt 3 lb</label>
-<label><input type="checkbox"> Grapes bag, abt 2 lb</label>
-<label><input type="checkbox"> Oranges bag, abt 4 lb</label>
+    <h3>Fresh Vegetables</h3>
+    <label><input type="checkbox"> Cucumbers ea</label>
+    <label><input type="checkbox"> Lettuce head</label>
+    <label><input type="checkbox"> Bell peppers bag, abt 1 lb</label>
+    <label><input type="checkbox"> Broccoli bag, abt 1 lb</label>
+    <label><input type="checkbox"> Carrots bag, abt 2 lb</label>
+    <label><input type="checkbox"> Onions bag, abt 3 lb</label>
+    <label><input type="checkbox"> Potatoes bag, abt 5 lb</label>
+    <label><input type="checkbox"> Tomatoes bag, abt 2 lb</label>
 
-<h3>Fresh Vegetables</h3>
-<label><input type="checkbox"> Cucumbers ea</label>
-<label><input type="checkbox"> Lettuce head</label>
-<label><input type="checkbox"> Bell peppers bag, abt 1 lb</label>
-<label><input type="checkbox"> Broccoli bag, abt 1 lb</label>
-<label><input type="checkbox"> Carrots bag, abt 2 lb</label>
-<label><input type="checkbox"> Onions bag, abt 3 lb</label>
-<label><input type="checkbox"> Potatoes bag, abt 5 lb</label>
-<label><input type="checkbox"> Tomatoes bag, abt 2 lb</label>
+    <h3>Dairy & Eggs</h3>
+    <label><input type="checkbox"> Butter 1 lb</label>
+    <label><input type="checkbox"> Cheddar cheese 1 lb</label>
+    <label><input type="checkbox"> Cottage cheese 16 oz</label>
+    <label><input type="checkbox"> Eggs doz</label>
+    <label><input type="checkbox"> 2% milk gal</label>
+    <label><input type="checkbox"> Sour cream 16 oz</label>
+    <label><input type="checkbox"> Vanilla yogurt 16 oz</label>
 
-<h3>Dairy & Eggs</h3>
-<label><input type="checkbox"> Butter 1 lb</label>
-<label><input type="checkbox"> Cheddar cheese 1 lb</label>
-<label><input type="checkbox"> Cottage cheese 16 oz</label>
-<label><input type="checkbox"> Eggs doz</label>
-<label><input type="checkbox"> 2% milk gal</label>
-<label><input type="checkbox"> Sour cream 16 oz</label>
-<label><input type="checkbox"> Vanilla yogurt 16 oz</label>
+    <h3>Meats (By lb)</h3>
+    <label><input type="checkbox"> Beef franks 1 lb</label>
+    <label><input type="checkbox"> Ground beef 1 lb</label>
+    <label><input type="checkbox"> Pork sausage 1 lb</label>
+    <label><input type="checkbox"> Stewing beef 1 lb</label>
 
-<h3>Meats (By lb)</h3>
-<label><input type="checkbox"> Beef franks 1 lb</label>
-<label><input type="checkbox"> Ground beef 1 lb</label>
-<label><input type="checkbox"> Pork sausage 1 lb</label>
-<label><input type="checkbox"> Stewing beef 1 lb</label>
+    <h3>Meats (By pkg)</h3>
+    <label><input type="checkbox"> Beef roast 3.75 lb pkg</label>
+    <label><input type="checkbox"> Chicken breasts 3 lb pkg</label>
+    <label><input type="checkbox"> Ham (sliced) 2 lb pkg</label>
+    <label><input type="checkbox"> Pork roast 2 lb pkg</label>
 
-<h3>Meats (By pkg)</h3>
-<label><input type="checkbox"> Beef roast 3.75 lb pkg</label>
-<label><input type="checkbox"> Chicken breasts 3 lb pkg</label>
-<label><input type="checkbox"> Ham (sliced) 2 lb pkg</label>
-<label><input type="checkbox"> Pork roast 2 lb pkg</label>
+    <h3>Breads</h3>
+    <label><input type="checkbox"> Whole wheat bread loaf</label>
+    <label><input type="checkbox"> White bread loaf</label>
+    <label><input type="checkbox"> Hamburger buns pkg of 8</label>
+    <label><input type="checkbox"> Hot dog buns pkg of 8</label>
+    <label><input type="checkbox"> Tortillas pkg of 12</label>
 
-<h3>Breads</h3>
-<label><input type="checkbox"> Whole wheat bread loaf</label>
-<label><input type="checkbox"> White bread loaf</label>
-<label><input type="checkbox"> Hamburger buns pkg of 8</label>
-<label><input type="checkbox"> Hot dog buns pkg of 8</label>
-<label><input type="checkbox"> Tortillas pkg of 12</label>
+    <h3>Seasonal Items</h3>
+    <label><input type="checkbox"> Cranberry sauce (jellied) 16 oz</label>
+    <label><input type="checkbox"> Stuffing mix 6 oz</label>
+    <label><input type="checkbox"> Turkey (whole) ea</label>
 
-<h3>Seasonal Items</h3>
-<label><input type="checkbox"> Cranberry sauce (jellied) 16 oz</label>
-<label><input type="checkbox"> Stuffing mix 6 oz</label>
-<label><input type="checkbox"> Turkey (whole) ea</label>
+    <button type="button" onclick="exportChecklist()">Save & Send Back</button>
 
-<button type="button" onclick="exportChecklist()">Save & Send Back</button>
-</form>
+    <div id="results">
+      <h3>📋 Your Selected Items:</h3>
+      <textarea id="selectedItems" rows="10"></textarea><br>
+      <button type="button" onclick="copyList()">📋 Copy List</button>
+      <p>After copying, paste this list into a text or email and send it back.</p>
+    </div>
 
-<script>
-function exportChecklist() {
-    const items = document.querySelectorAll('#checklistForm input[type="checkbox"]');
-    let selected = [];
-    items.forEach(item => {
-        if(item.checked) {
-            selected.push(item.parentElement.textContent.trim());
-        }
-    });
-    const exportText = selected.join('\n') || 'No items selected';
-    alert('Copy the list below and text it back:\n\n' + exportText);
-}
-</script>
+  </form>
+
+  <script>
+    function exportChecklist() {
+      const items = document.querySelectorAll('#checklistForm input[type="checkbox"]');
+      const selected = [];
+      items.forEach(item => {
+        if (item.checked) selected.push(item.parentElement.textContent.trim());
+      });
+      const output = selected.join('\n') || 'No items selected';
+      document.getElementById('selectedItems').value = output;
+      document.getElementById('results').style.display = 'block';
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function copyList() {
+      const textarea = document.getElementById('selectedItems');
+      textarea.select();
+      textarea.setSelectionRange(0, 99999);
+      document.execCommand('copy');
+      alert('✅ List copied! You can now paste it into a text or email.');
+    }
+  </script>
 
 </body>
 </html>
