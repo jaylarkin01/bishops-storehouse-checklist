@@ -28,8 +28,9 @@
 <div id="checklist"></div>
 
 <button onclick="copyList()">📋 Copy Selected Items</button>
-<textarea id="outputBox" readonly placeholder="Your selected items will appear here..."></textarea>
+<button onclick="clearAll()">🧹 Clear All Quantities</button>
 
+<textarea id="outputBox" readonly placeholder="Your selected items will appear here..."></textarea>
 <p class="small-note">Values are saved automatically so you won’t lose progress if you refresh.</p>
 
 <script>
@@ -126,7 +127,7 @@ for (const [cat, items] of Object.entries(categories)) {
   checklistDiv.appendChild(details);
 }
 
-// --- Copy button ---
+// --- Copy selected items ---
 function copyList() {
   const inputs = document.querySelectorAll('input[type=number]');
   const selected = [];
@@ -153,6 +154,18 @@ function copyList() {
   } catch {
     alert("⚠️ Copy not supported on this device. Please long-press and Copy manually.");
   }
+}
+
+// --- Clear all quantities ---
+function clearAll() {
+  if (!confirm("This will reset all quantities to 0. Are you sure?")) return;
+  const inputs = document.querySelectorAll('input[type=number]');
+  inputs.forEach(input => {
+    input.value = 0;
+    localStorage.setItem(input.parentElement.firstChild.textContent.trim(), 0);
+  });
+  document.getElementById('outputBox').value = "";
+  alert("✅ All quantities cleared.");
 }
 </script>
 
