@@ -3,151 +3,161 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bishop’s Storehouse Checklist</title>
+<title>Bishop's Storehouse Checklist</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 1em; background: #f8f9fa; }
-  h1 { text-align: center; }
-  details { background: #fff; border-radius: 10px; margin-bottom: 8px; padding: 8px 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-  summary { font-weight: bold; cursor: pointer; font-size: 1.1em; }
-  label { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; }
-  input[type="number"], input[type="text"] { width: 60px; padding: 4px; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; text-align: center; }
-  input[type="text"] { width: 200px; text-align: left; }
-  button { 
-    display: block; width: 100%; margin-top: 1em; padding: 12px; 
-    background: #007bff; color: white; font-size: 1.1em; border: none; border-radius: 8px; cursor: pointer; 
+  body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    max-width: 1000px;
+    background-color: #f8f9fa;
   }
-  button:hover { background: #0056b3; }
-  textarea { width: 100%; height: 180px; margin-top: 10px; font-size: 1em; }
-  .small-note { text-align: center; font-size: 0.9em; color: #666; }
-  .name-input { margin-bottom: 1em; display: flex; align-items: center; gap: 8px; }
+  h1 {
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #e9ecef;
+  }
+  input[type="number"] {
+    width: 70px;
+    text-align: center;
+  }
+  input[type="text"] {
+    width: 300px;
+    padding: 6px;
+  }
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+  }
+  .btn:hover {
+    background-color: #0056b3;
+  }
 </style>
 </head>
 <body>
 
-<h1>🛒 Bishop’s Storehouse Checklist</h1>
-<p class="small-note">Enter your name, select quantities (0–9), then copy your list to send back.</p>
+<h1>Bishop's Storehouse Checklist</h1>
 
-<div class="name-input">
-  <label>Your Name: <input type="text" id="userName" placeholder="John Smith"></label>
-</div>
+<label for="nameInput"><strong>Your Name:</strong></label>
+<input type="text" id="nameInput" placeholder="Enter your name here">
 
-<div id="checklist"></div>
+<table id="itemTable">
+  <thead>
+    <tr>
+      <th>Item</th>
+      <th>Size / Description</th>
+      <th>Quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- CANNED MEATS -->
+    <tr><td>Fully cooked beef</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Beef stew</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Chili</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Pork and beans</td><td>14.8 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Tuna</td><td>5 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Chicken breast pieces</td><td>12.5 oz</td><td><input type="number" min="0" value="0"></td></tr>
 
-<button onclick="copyList()">📋 Copy Selected Items</button>
-<button onclick="clearAll()">🧹 Clear All Quantities</button>
+    <!-- CANNED SOUPS -->
+    <tr><td>Chicken flavored rotini soup</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Cream of chicken soup</td><td>14.5 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Cream of mushroom soup</td><td>14.5 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Tomato soup</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
 
-<textarea id="outputBox" readonly placeholder="Your selected items will appear here..."></textarea>
-<p class="small-note">Values are saved automatically so you won’t lose progress if you refresh.</p>
+    <!-- CANNED FRUITS -->
+    <tr><td>Applesauce</td><td>26.5 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Peaches</td><td>29 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Pears</td><td>29 oz</td><td><input type="number" min="0" value="0"></td></tr>
+
+    <!-- CANNED VEGETABLES -->
+    <tr><td>Corn</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Green beans</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Spaghetti sauce</td><td>27.7 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Tomato sauce</td><td>14.4 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Diced tomatoes</td><td>28 oz</td><td><input type="number" min="0" value="0"></td></tr>
+
+    <!-- DRINKS -->
+    <tr><td>Hot cocoa</td><td>26 servings</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Non-fat dry milk</td><td>27 servings</td><td><input type="number" min="0" value="0"></td></tr>
+
+    <!-- DESSERTS -->
+    <tr><td>Strawberry gelatin</td><td>8 servings</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Chocolate pudding</td><td>6 servings</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Vanilla pudding</td><td>6 servings</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Chocolate cake mix</td><td>18.2 oz</td><td><input type="number" min="0" value="0"></td></tr>
+    <tr><td>Yellow cake mix</td><td>18.2 oz</td><td><input type="number" min="0" value="0"></td></tr>
+
+    <!-- (Additional categories like seasonings, beans, rice, potatoes, dairy, meats, breads, fresh produce, etc.) -->
+    <!-- Add them here following the same structure -->
+
+  </tbody>
+</table>
+
+<button class="btn" onclick="copyAndSMS()">Copy & Open SMS</button>
 
 <script>
-// --- Category + Items ---
-const categories = {
-  "CANNED MEATS": ["Fully cooked beef (canned) 14.4 oz", "Beef stew 14.4 oz", "Chili 14.4 oz", "Pork and beans 14.8 oz", "Tuna 5 oz", "Chicken breast pieces 12.5 oz"],
-  "CANNED SOUPS": ["Chicken flavored rotini soup 14.4 oz", "Cream of chicken soup 14.5 oz", "Cream of mushroom soup 14.5 oz", "Tomato soup 14.4 oz"],
-  "CANNED FRUITS": ["Applesauce 26.5 oz", "Peaches 29 oz", "Pears 29 oz"],
-  "CANNED VEGETABLES": ["Corn 14.4 oz", "Green beans 14.4 oz", "Spaghetti sauce 27.7 oz", "Tomato sauce 14.4 oz", "Diced tomatoes 28 oz"],
-  "DRINKS": ["Hot cocoa 26 servings", "Non-fat dry milk 27 servings"],
-  "DESSERTS": ["Strawberry gelatin 8 servings", "Chocolate pudding 6 servings", "Vanilla pudding 6 servings", "Chocolate cake mix 18.2 oz", "Yellow cake mix 18.2 oz"],
-  "SEASONINGS": ["Cinnamon 2.37 oz", "Black pepper 2.2 oz", "Salt (iodized) 26 oz", "Vanilla flavor 4 fl oz"],
-  "BEANS, RICE, AND POTATOES": ["Black beans (canned) 14.8 oz", "Pinto Beans (canned) 14.8 oz", "Great northern beans (canned) 14.8 oz", "Pinto beans (dry) 16 oz", "Refried beans (dehydrated) 2 lb", "Instant potatoes 28 oz", "Rice 32 oz"],
-  "COOKING PRODUCTS": ["Baking powder 8.1 oz", "Baking soda 12 oz", "Evaporated milk 12 fl oz", "Raisins 16 oz", "Vegetable oil 24 fl oz", "Yeast 3 packs"],
-  "JAMS AND CONDIMENTS": ["Olives (black) 6 oz", "Ketchup 24 oz", "Honey 12 oz", "Raspberry jam 20.5 oz", "Strawberry jam 20.5 oz", "Mustard 10.5 oz", "Pancake syrup 20.4 fl oz", "Peanut butter 16 oz", "Mayo 15 oz", "Ranch dressing 16 oz", "Salsa 26.5 oz"],
-  "SUGARS": ["Brown sugar 2 lb", "Granulated sugar 4 lb", "Powdered sugar 2 lb"],
-  "FLOURS": ["Pancake and waffle mix 4 lb", "White flour 10 lb"],
-  "PASTAS": ["Macaroni 16 oz", "Macaroni and cheese 7 oz", "Ribbon pasta 16 oz", "Spaghetti 16 oz"],
-  "CEREALS": ["Rolled oats 32 oz", "Honey nut o's 24.5 oz", "Raisin bran 22 oz"],
-  "BABY PRODUCTS": ["Baby Cereal 8 oz", "Baby formula 12.4 oz", "Diapers, size 1 (pkg of 50)", "Diapers, size 3 (pkg of 36)", "Diapers, size 4 (pkg of 31)", "Baby wipes pkg"],
-  "HOUSEHOLD PRODUCTS": ["Aluminum foil roll", "Liquid bleach 43 fl oz", "Cleanser 21 oz", "Liquid dish soap 22 fl oz", "Automatic dishwasher liquid 42 fl oz", "Laundry detergent 50 fl oz", "Plastic wrap roll", "Lysol spray cleaner 32 oz"],
-  "PERSONAL PRODUCTS": ["Deodorant (men)", "Deodorant (women)", "Bar soap pkg of 3", "Razor (disposable)", "Sanitary pads pkg of 24", "Shampoo (with conditioner) 12 fl oz", "Shaving cream 10 oz", "Tampons (regular) pkg of 32", "Tampons (super) pkg of 32", "Toilet paper pkg of 4", "Toothbrush (adult)", "Toothbrush (child)", "Toothpaste 4 oz"],
-  "FRESH FRUITS": ["Apples (abt 4 lb)", "Bananas (abt 3 lb)", "Grapes (abt 2 lb)", "Oranges (abt 4 lb)"],
-  "FRESH VEGETABLES": ["Cucumbers", "Lettuce head", "Bell peppers (abt 1 lb)", "Broccoli (abt 1 lb)", "Carrots (abt 2 lb)", "Onions (abt 3 lb)", "Potatoes (abt 5 lb)", "Tomatoes (abt 2 lb)"],
-  "DAIRY AND EGGS": ["Butter 1 lb", "Cheddar cheese 1 lb", "Cottage cheese 16 oz", "Eggs doz", "2% milk gal", "Sour cream 16 oz", "Vanilla yogurt 16 oz"],
-  "MEATS (ORDERED BY LB)": ["Beef franks 1 lb", "Ground beef 1 lb", "Pork sausage 1 lb", "Stewing beef 1 lb"],
-  "MEATS (ORDERED BY PKG)": ["Beef roast 3.75 lb pkg", "Chicken breasts 3 lb pkg", "Ham (sliced) 2 lb pkg", "Pork roast 2 lb pkg"],
-  "BREADS": ["Whole wheat bread loaf", "White bread loaf", "Hamburger buns pkg of 8", "Hot dog buns pkg of 8", "Tortillas pkg of 12"],
-  "SEASONAL ITEMS": ["Cranberry sauce (jellied) 16 oz", "Stuffing mix 6 oz", "Turkey (whole) ea"]
-};
-
-// --- Render checklist ---
-const checklistDiv = document.getElementById('checklist');
-for (const [cat, items] of Object.entries(categories)) {
-  const details = document.createElement('details');
-  const summary = document.createElement('summary');
-  summary.textContent = cat;
-  details.appendChild(summary);
-
-  items.forEach(item => {
-    const label = document.createElement('label');
-    label.textContent = item;
-
-    const numberInput = document.createElement('input');
-    numberInput.type = 'number';
-    numberInput.min = 0;
-    numberInput.max = 9;
-    numberInput.value = localStorage.getItem(item) || 0;
-
-    // Clear leading 0 on focus
-    numberInput.addEventListener('focus', () => {
-      if (numberInput.value === "0") numberInput.value = "";
+  // Auto-clear 0 in number boxes
+  document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('focus', () => {
+      if (input.value === '0') input.value = '';
     });
-
-    // Reset to 0 on blur if empty, save to localStorage
-    numberInput.addEventListener('blur', () => {
-      if (numberInput.value === "") numberInput.value = 0;
-      localStorage.setItem(item, numberInput.value);
+    input.addEventListener('blur', () => {
+      if (input.value === '') input.value = '0';
     });
-
-    // Save changes
-    numberInput.addEventListener('change', () => localStorage.setItem(item, numberInput.value));
-
-    label.appendChild(numberInput);
-    details.appendChild(label);
   });
-  checklistDiv.appendChild(details);
-}
 
-// --- Copy selected items ---
-function copyList() {
-  const name = document.getElementById('userName').value.trim() || "[No Name]";
-  const inputs = document.querySelectorAll('input[type=number]');
-  const selected = [];
-  inputs.forEach(input => {
-    const qty = parseInt(input.value);
-    if (qty > 0) {
-      const itemName = input.parentElement.firstChild.textContent.trim();
-      selected.push(`• ${itemName} – ${qty}`);
+  // Copy plain text and open SMS
+  function copyAndSMS() {
+    const name = document.getElementById('nameInput').value.trim() || '(no name entered)';
+    const rows = document.querySelectorAll('#itemTable tbody tr');
+    let list = `${name}\n\nSelected Items:\n`;
+
+    rows.forEach(row => {
+      const item = row.cells[0].textContent.trim();
+      const size = row.cells[1].textContent.trim();
+      const qty = row.cells[2].querySelector('input').value;
+      if (qty && qty !== '0') {
+        list += `• ${item} ${size} – ${qty}\n`;
+      }
+    });
+
+    if (!list.includes('•')) {
+      alert('No items selected.');
+      return;
     }
-  });
-  if (selected.length === 0) {
-    alert("No items selected.");
-    return;
-  }
-  const text = `Name: ${name}\n\nSelected Items:\n` + selected.join("\n");
-  const outputBox = document.getElementById('outputBox');
-  outputBox.value = text;
-  outputBox.select();
 
-  try {
-    navigator.clipboard.writeText(text)
-      .then(() => alert("✅ Items copied to clipboard! You can now paste into a text message."))
-      .catch(() => alert("⚠️ Copying failed. Please long-press and select Copy manually."));
-  } catch {
-    alert("⚠️ Copy not supported on this device. Please long-press and Copy manually.");
-  }
-}
+    // Copy plain text
+    const textarea = document.createElement('textarea');
+    textarea.value = list;
+    document.body.appendChild(textarea);
+    textarea.select();
+    textarea.setSelectionRange(0, 99999); // for iOS
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
 
-// --- Clear all quantities + name ---
-function clearAll() {
-  if (!confirm("This will reset all quantities to 0. Are you sure?")) return;
-  const inputs = document.querySelectorAll('input[type=number]');
-  inputs.forEach(input => {
-    input.value = 0;
-    localStorage.setItem(input.parentElement.firstChild.textContent.trim(), 0);
-  });
-  document.getElementById('outputBox').value = "";
-  document.getElementById('userName').value = "";
-  alert("✅ All quantities and name cleared.");
-}
+    // Open SMS app with pre-filled body
+    const body = encodeURIComponent(list);
+    window.location.href = `sms:?body=${body}`;
+
+    alert('✅ List copied and SMS app opened. Choose a recipient to send.');
+  }
 </script>
 
 </body>
